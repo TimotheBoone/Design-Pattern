@@ -9,8 +9,8 @@
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/michka"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.connection.username" value="tim"/>
-            <property name="hibernate.connection.password" value="azerty"/>
+            <property name="hibernate.connection.username" value="user"/>
+            <property name="hibernate.connection.password" value="password"/>
         </properties>
 
     </persistence-unit>
