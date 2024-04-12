@@ -13,6 +13,7 @@ public class JpaDaoAdresse extends JpaDao<E_Adresse> implements DaoAdresse {
     public JpaDaoAdresse() {
         super();
         this.jpaDaoBienService = new JpaDaoBien();
+        this.name = "E_Adresse";
     }
 
     @Override
@@ -37,10 +38,13 @@ public class JpaDaoAdresse extends JpaDao<E_Adresse> implements DaoAdresse {
 
     @Override
     public int nombreBiens(E_Adresse adresse) {
-        List<E_Bien> list = this.jpaDaoBienService.findAll(E_Bien.class);
+        String stockName = this.name;
+        this.name = "E_Bien";
+        List<E_Bien> listBien = this.jpaDaoBienService.findAll(E_Bien.class);
+        this.name = stockName;
         int i = 0;
-        for (E_Bien bien : list) {
-            if (bien.getAdresse().equals(adresse)) {
+        for (E_Bien bien : listBien) {
+            if (bien.getAdresse() != null && bien.getAdresse().equals(adresse)) {
                 i++;
             }
         }
@@ -49,14 +53,18 @@ public class JpaDaoAdresse extends JpaDao<E_Adresse> implements DaoAdresse {
 
     @Override
     public List<E_Bien> biensACetteAdresse(E_Adresse adresse) {
+        String stockName = this.name;
+        this.name = "E_Bien";
         List<E_Bien> list = this.jpaDaoBienService.findAll(E_Bien.class);
+        this.name = stockName;
         List<E_Bien> newList = new ArrayList<>();
         for (E_Bien bien : list) {
-            if (bien.getAdresse().equals(adresse)) {
+            if (bien.getAdresse() != null && bien.getAdresse().equals(adresse)) {
                 newList.add(bien);
             }
         }
         return newList;
     }
+
 }
 

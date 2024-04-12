@@ -9,15 +9,13 @@ import java.util.List;
 
 
 abstract public class JpaDao<T> implements Dao<T> {
-    protected static final String name = "Employee";
+    protected static String name = "Employee";
 
     private final EntityManager entityManager;
-
     private final EntityManagerFactory entityManagerFactory;
-
     private final EntityTransaction entityTransaction;
 
-    public JpaDao() {
+    protected JpaDao() {
         this.entityManagerFactory = Persistence.createEntityManagerFactory("default");
         this.entityManager = this.entityManagerFactory.createEntityManager();
         this.entityTransaction = this.entityManager.getTransaction();
@@ -69,8 +67,8 @@ abstract public class JpaDao<T> implements Dao<T> {
     public List<T> findAll(Class c) {
         try {
             this.entityTransaction.begin();
-            String queryString = "SELECT c FROM " + name;
-            Query query = this.entityManager.createQuery(queryString);
+            String queryString = "SELECT e FROM " + name + " e";
+            TypedQuery query = this.entityManager.createQuery(queryString, c);
             List list = query.getResultList();
             this.entityTransaction.commit();
             return list;
@@ -97,12 +95,14 @@ abstract public class JpaDao<T> implements Dao<T> {
     public T find(Class c, int id) {
         try {
             this.entityTransaction.begin();
-            T obj = (T) this.entityManager.find(c, id);
+            T obj = (T) this.entityManager.find(c,id);
             this.entityTransaction.commit();
             return obj;
         } catch (Exception e) {
             return null;
         }
     }
+
+
 
 }

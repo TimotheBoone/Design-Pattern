@@ -155,4 +155,22 @@ public class E_Bien {
     public int hashCode() {
         return Objects.hash(idBien, typeBien, categorieSurfaceBien, surfaceHabitable, nbrPieces, descriptionLibre, commentaireAgence, dateCreation, dateDerniereMaj, adresse, noAppartement, etage);
     }
+
+    @Override
+    public String toString() {
+        return "E_Bien{" +
+                "idBien=" + idBien +
+                ", typeBien=" + typeBien +
+                ", categorieSurfaceBien=" + categorieSurfaceBien +
+                ", surfaceHabitable=" + surfaceHabitable +
+                ", nbrPieces=" + nbrPieces +
+                ", descriptionLibre='" + descriptionLibre + '\'' +
+                ", commentaireAgence='" + commentaireAgence + '\'' +
+                ", dateCreation=" + dateCreation +
+                ", dateDerniereMaj=" + dateDerniereMaj +
+                ", adresse=" + adresse +
+                ", noAppartement='" + noAppartement + '\'' +
+                ", etage=" + etage +
+                '}';
+    }
 }

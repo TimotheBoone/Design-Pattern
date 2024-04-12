@@ -6,6 +6,11 @@ import metier.E_CategorieSurfaceBien;
 import java.util.List;
 
 public class JpaDaoCategorieSurface extends JpaDao<E_CategorieSurfaceBien> implements DaoCategorieSurface {
+    public JpaDaoCategorieSurface() {
+        super();
+        this.name = "E_CategorieSurfaceBien";
+    }
+
     @Override
     public boolean create(E_CategorieSurfaceBien obj) {
         return super.create(obj);

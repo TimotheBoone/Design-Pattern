@@ -6,6 +6,11 @@ import metier.E_TypeBien;
 import java.util.List;
 
 public class JpaDaoTypeBien extends JpaDao<E_TypeBien> implements DaoTypeBien {
+    public JpaDaoTypeBien() {
+        super();
+        this.name = "E_TypeBien";
+    }
+
     @Override
     public boolean create(E_TypeBien obj) {
         return super.create(obj);

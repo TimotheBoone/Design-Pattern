@@ -100,4 +100,16 @@ public class E_Adresse {
         result = 31 * result + (ville != null ? ville.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "E_Adresse{" +
+                "idAdresse=" + idAdresse +
+                ", typeVoie='" + typeVoie + '\'' +
+                ", nomVoie='" + nomVoie + '\'' +
+                ", numeroVoie='" + numeroVoie + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", ville='" + ville + '\'' +
+                '}';
+    }
 }
